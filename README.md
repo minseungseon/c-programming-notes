@@ -26,9 +26,9 @@ getchar() 함수를 다양한 character string받는데 사용하기
 ```c
 main()
 char character;
-character='';
-while(character!='\n')
+character=''; //캐릭터 값을 일단 빈칸으로 설정해줌 
+while(character!='\n') //엔터가 들어오지 않는 동안 계속되도록 함 
 {
-    character =getchar();
+    character =getchar(); //getchar()으로 계속 받음 
 }
 ```
