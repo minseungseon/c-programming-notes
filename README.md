@@ -83,8 +83,8 @@ scanf("%3d %3d", &a, &b);
 - default case 는 무조건 있어야한다  
 
 ### 5. scanf()와 getchar() 의 차이  
-- scanf(): 변수에 값을 입력받을 때 사용함  
-- getchar(): 표준 입력으로부터 아무 값이나 한 개 읽어올 때 사용함 (**오직 1개만!**)  
+- scanf(): 변수에 값을 입력받을 때 사용함, **빈칸**이 포함된 줄은 모두 읽을 수 없음.  
+- getchar(): 표준 입력으로부터 아무 값이나 한 개 읽어올 때 사용함 (**오직 1개만!**), 빈칸도 읽음    
 
 ### 6. 다양한 loop  
 - for loop 에서, i와 같은 control variable 의 시작 값은 끝나는 값 보다 작아야한다.  
@@ -186,16 +186,136 @@ main()
 ````
 
 ### 11. Array 개념  
+- Array는, '값 과 변수' 를 지닌 **data structure** 이다.  
 - 배열 안의 요소들의 데이터타입은 **모두 같아야함**  
 - 배열이 선언되면, 그 요소들을 **자동으로 0으로 설정한다**  
 - char type 변수는 배열에서 subscript 로 쓰일 수 없다. unsigned long int type은 가능하다.  
 - 다배열의 경우에는 그 배열의 크기를 **무조건 명시**해주어야 한다.  
 - expression 을 subscript 로 사용하려고 한다면, 항상 그 값은 0 보다 커야한다.  
 - 배열의 크기는 **최대 4차원**까지이다.  
+- String variables cannot be used with the assignment operator.
+
 
 - **malloc function**을 사용하여 만들어진 배열은 **'포인터 변수'**이다.  
 - **sorting** is the process of arranging the elements of an array in order.  
-
+  
+  
 #### 잘못된 배열 예시  
+1.  
+수정전 `int m[2,4]={(0,0,0,0)(1,1,1,1)};`  
+수정후 `int m[2,4]={{0,0,0,0},{1,1,1,1}};`  
+  
+2. 
+수정전 `float result[10]=0;`  
+수정후 `float result[10]={0};`  
 
+3.  
+수정전 `char str1[4]="GOOD";`  
+수정후 `char str1[5]="GOOD";`  
+마지막에 '\0' 값이 string 배열에 입력되어있기 때문에 총 5 사이즈로 설정해주어야한다.  
+  
+### 12. 수학기호  
+- character 변수에는 수학기호를 쓸 수 없다.  
+
+### 13. ASCII 코드  
+- 대문자가 소문자보다 앞선다.  
+- 개수는 128개 인데, 특수문자까지 합치면 더 많다.  
+- 아스키 코드값은 문자를 **1대1로 대응시킨 숫자**이다.  
+
+-ASCII 함수: 문자열을 알파벳 순서로 정렬시키는데 쓰인다. 
+
+### 14. C언어 문자열처리 라이브러리  
+1. **strlen**  
+    - string length를 의미한다.  
+    - 문자열의 길이를 알려줌  
+    - `unsinged int strlen(char* str);`
+    
+2. **strcmp**  
+    - string compare 를 의미한다.  
+    - 문자열을 비교해주고, return 값으로 그 비교 결과를 나타내준다.  
+    - `int strcmp(const char* str1, const char* str2);`  
+    - 리턴값 0: 동일한 문자열이다.  
+    - 리턴값 1: str1이 str2보다 사전순서로 볼 때 뒤에 있다.  
+    - 리턴값 -1: str1이 str2 보다 사전순서로 볼 때 앞에 있다.  
+
+3. **strcpy**  
+    - string copy  
+    - `char* strcpy(char* dest, char* src);`  
+    - src의 문자열을 dest로 복사시킴 
+    - src는 char형 포인터여서, src의 주소로 가서 문자 하나하나 dest에 복사시키는 식으로 작동한다.  
+    - dest의 배열 크기는 src보다 같거나 커야한다!!  
+   **strncpy**
+    - string number copy  
+    - 마지막에 숫자를 parameter로 추가하여 src에서 원하는 범위의 문자열을 dest에 복사시키도록 하는 함수이다.  
+4. **strncat**  
+    - string concat  
+    - `char* strncat(char* destination, char* source, size_t num);`  
+    - destinaiont : 배열을 가르키는 포인터이다. C 문자열을 보관하며(null \0 포함), 합쳐진 문자열이 들어갈 만큼 충분한 크기를 가지고 있어야 한다!  
+    - source: destination 끝에 덧붙여질 문자열이다  
+    - num: source 에서 붙일 문자의 (최대) 개수이다.  
+    - **총 3개의 parameter** 를 가질 수 있다!  
+    
+### 15. gets()  
+- input function 이다.  
+- 오직 string parameter 를 가진다.  
+- 하나의 문자열만을 가져올 수 있다.  
+- 예. `gets(s1,s2)` 는 불가.  
+
+### 16. atoi, atof, atol  
+- <stdlib.h> 헤더파일(Standard Library)이 필요하다!  
+- atoi: 문자열을 정수 타입으로(char --> int)  
+- atof: 문자열을 실수 타입으로(char --> float)  
+- atol: 문자열을 long 정수 타입으로(char --> long int)  
+
+
+### 17. strstr  
+- <string.h> 헤더파일 필요  
+- `char*strstr(char* str1, const char*str2);`  
+- str1 에서 str2와 일치하는 문자열이 있는지 확인하는 함수!  
+- str1 에 str2와 일치하는 문쟈열이 있으면 --> **해당 위치의 포인터를 반환함!!**  
+- 없으면 --> **null값 반환**  
+```c
+char s1[] = "ANIL KUMAR GUPTA";
+char s2[] = "KUMAR";
+printf(strstr(s1,s2)); //s1에 s2와 일치하는 문자열이 있으면 그 위치값 반환
+
+output:
+KUMAR GUPTA
+```
+
+```c
+main()
+{
+    char str1 []="Hi this is minseung's github";
+    char str2 []="github";
+    
+    char* ptr = strstr(str1, str2); //반환되는 값이 주소이기 때문에 포인터로 받아줌
+    if(ptr != NULL){ //ptr주소의 값으로 null 반환이 안되었다면, 즉 str1에서 str2와 일치하는 문자열을 발견했다면!
+        strncpy(ptr, "dev blog", 8); //dev blog 문자열을 ptr 에 하나하나 복사시킨다, 즉 기존의 github --> dev blog
+        printf("%s\n",str1);
+        
+    }
+    // 출력값: Hi this is minseung's dev blog
+}
+```
+
+### 18. puts()  
+- printf() 함수 대신 쓰일 수 있음.   
+
+### 19. gets(string)  
+- read a line of string  
+
+### 20. User-Defined Function 개념  
+- C에서의 함수는 무조건 한 argument 는 가지고 있어야한다.  
+- 'function'은 메인함수 이후, 그리고 메인함수 외부에서 선언된다.  
+- return type은 기본적으로 int 로 설정된다.  
+- function call 에서 불리워지는 parameter(매개변수)는 **'actual parameter'** 라고 불린다.  
+- function 내부에서 선언되면 --> local(지역변수, internal),  
+  외부(before main function)는 global(전역변수, external)  
+- **prototype** : the region where a variable is actually variable for use  
+- **recursive function (재귀함수)**: 스스로를 호출하는 함수  
+
+### 21. 매개변수를 전달하는 두가지 방법  
+1. Pass by value ( call by value )  
+2. Pass by pointers ( call by pointers )  
 
