@@ -357,7 +357,22 @@ main()
     `&125` :상수를 포인터로 포인트 할 수 없다.  
     `int x[10]`
      `&x`       : array 이름을 포인트 할 수 없다.  
-     `&(x+y)`: expression을 포인트 할 
-     `&x`       : array 이름을 포인트 할 수 없다.  포인트 수 없다.
-     `&x`       : array 이름을 포인트 할 수 없다.  포인트   
-
+     `&(x+y)`: expression을 포인트 할 수 없다.
+- **pointer에서의 바이트는 다르다!**  
+    - 원래는 integer(4byte), float(4byte), character(1byte) 이다!  
+    - `sizeof(int*)` = 8byte  
+    - `sizeof(float*)` = 8byte  
+    - `sizeof(char*)` = 8byte  
+- pointer에 쓰이는 **asterisk**의 용도  
+    1. 포인터를 선언할 때  
+    2. 해당 주소에 값이 접근하는 용도  
+    ```c
+    main()
+    {
+    int a=5;
+    int* address= &a;
+    printf("문자값은: %d, 포인터값은:%x, 포인터를 통해 표현하는 문자값:%d\n", a, address, *address);
+    
+    // 출력값:문자값은: 5, 포인터값은:efbff53c, 포인터를 통해 표현하는 문자값:5
+    }
+    ```
