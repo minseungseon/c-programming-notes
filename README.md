@@ -350,22 +350,27 @@ main()
 
 
 ### 23. Pointer 의 정의  
-- pointer란, **"derived data type in C"** 이자, **"특정 value 의 메모리 주소값을 지니는 것"**이다.  
+- pointer란, **"derived data type in C"** 이자, "**특정 value 의 메모리 주소값을 지니는 것**"이다.  
+
 - operator "&"의 역할:  
     앞의 변수의 주소를 return 해준다.  
+    
 - 안되는 것:  
     `&125` :상수를 포인터로 포인트 할 수 없다.  
     `int x[10]`
      `&x`       : array 이름을 포인트 할 수 없다.  
-     `&(x+y)`: expression을 포인트 할 수 없다.
+     `&(x+y)`: expression을 포인트 할 수 없다.  
+     
 - **pointer에서의 바이트는 다르다!**  
     - 원래는 integer(4byte), float(4byte), character(1byte) 이다!  
     - `sizeof(int*)` = 8byte  
     - `sizeof(float*)` = 8byte  
-    - `sizeof(char*)` = 8byte  
+    - `sizeof(char*)` = 8byte    
+    
 - pointer에 쓰이는 **asterisk**의 용도  
     1. 포인터를 선언할 때  
-    2. 해당 주소에 값이 접근하는 용도  
+    2. 해당 주소에 값이 접근하는 용도    
+    
     ```c
     main()
     {
