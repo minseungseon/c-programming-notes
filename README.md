@@ -352,10 +352,10 @@ main()
 ### 23. Pointer 의 정의  
 - pointer란, **"derived data type in C"** 이자, "**특정 value 의 메모리 주소값을 지니는 것**"이다.  
 
-- operator "&"의 역할:  
+- operator "&"의 역할:
     앞의 변수의 주소를 return 해준다.  
     
-- 안되는 것:  
+- 안되는 것:
     `&125` :상수를 포인터로 포인트 할 수 없다.  
     `int x[10]`
      `&x`       : array 이름을 포인트 할 수 없다.  
