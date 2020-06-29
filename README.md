@@ -352,10 +352,10 @@ main()
 ### 23. Pointer 의 정의  
 - pointer란, **"derived data type in C"** 이자, "**특정 value 의 메모리 주소값을 지니는 것**"이다.  
 
-- operator "&"의 역할:
+- operator "&"의 역할:  
     앞의 변수의 주소를 return 해준다.  
     
-- 안되는 것:
+- 안되는 것:  
     `&125` :상수를 포인터로 포인트 할 수 없다.  
     `int x[10]`
      `&x`       : array 이름을 포인트 할 수 없다.  
@@ -363,9 +363,9 @@ main()
      
 - **pointer에서의 바이트는 다르다!**
     - 원래는 integer(4byte), float(4byte), character(1byte) 이다!  
-    - `sizeof(int*)` = 8byte  
-    - `sizeof(float*)` = 8byte  
-    - `sizeof(char*)` = 8byte    
+    - integer 포인터의 크기: `sizeof(int*)` = 8byte  
+    - float 포인터의 크기:`sizeof(float*)` = 8byte  
+    - character 포인터의 크기:`sizeof(char*)` = 8byte    
     
 - pointer에 쓰이는 **asterisk**의 용도
     1. 포인터를 선언할 때  
@@ -375,9 +375,46 @@ main()
     main()
     {
     int a=5;
-    int* address= &a;
-    printf("문자값은: %d, 포인터값은:%x, 포인터를 통해 표현하는 문자값:%d\n", a, address, *address);
+    int* address= &a; //포인터 선언 
+    printf("문자값은: %d, 포인터값은:%x, 포인터를 통해 표현하는 문자값:%d\n", a, address, *address); //*address 는 해당 주소에 값이 접근하는 것 
     
     // 출력값:문자값은: 5, 포인터값은:efbff53c, 포인터를 통해 표현하는 문자값:5
     }
     ```
+### 24. Pointer를 이용한 위치 swap  
+```c
+swap(int* a, int* b){ //integer 포인터를 입력받는다.
+    int temp;
+    temp=*a;
+    *a=*b;
+    *b=temp;
+    return 0;
+}
+main()
+{
+    int a=6;
+    int b=10;
+    printf("swap 전: a= %d, b= %d\n",a,b);
+    swap(&a,&b);                    //각각의 주소값을 넘겨서 '주소값이 swap'되도록 한다.
+    printf("swap 후: a= %d, b= %d\n",a,b);
+                                    // 출력값:swap 전: a= 6, b= 10
+                                    //      swap 후: a= 10, b= 6
+}
+```
+### 24. Pointer와 배열 활용  
+```c
+main()
+{
+    char arr[9]="minseung"; //minseung 8글자 + \0 = 9 사이즈의 배열 선언!
+    char* ptr = &arr[0]; //포인터의 데이터타입을 가지고 오는 것과 일치시켜준다.
+    
+    printf("배열의 첫번째 글자: %c\n",*ptr); //ptr 자체는 주소값을 의미하고, *ptr은 그 주소에 있는 value 값을 return한다.
+    printf("배열의 두번째 글자: %c\n",*(ptr+1)); //character는 1바이트이다! 따라서 주소값에 1을 더하면 그 다음 value 가 return된다.
+    printf("배열의 세번째 글자: %c\n",*(ptr+2)); //위와 같다.
+    // 출력값:배열의 첫번째 글자: m
+    //      배열의 두번째 글자: i
+    //      배열의 세번째 글자: n
+}
+```
+
+
