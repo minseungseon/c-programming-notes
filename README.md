@@ -315,7 +315,36 @@ main()
 - **prototype** : the region where a variable is actually variable for use  
 - **recursive function (재귀함수)**: 스스로를 호출하는 함수  
 
+#### function 선언 방법 관련  
+잘못된 예:  
+1. actual parameter를 void 로 입력받을 때에는 한번만!   
+수정전: `void fun(void, void);`  
+수정후: `void fun(void);`  
+
+2.  
+수정전: `int fun (int a,b);`  
+수정후: `void fun(int a, int b);`   
+
+3. data type 만 쓰는 것 가능  
+예: `void fun(int, float, char);`  
+
 ### 21. 매개변수를 전달하는 두가지 방법  
 1. Pass by value ( call by value )  
 2. Pass by pointers ( call by pointers )  
+
+### 22. static 변수와 auto 변수 (자동변수)  
+1. **static**변수  
+    - storage class(기억 영역 분류)를 명시해주어야함  
+    - 디폴트 값으로 0 을 output 값으로 지정함  
+    - 눈에 보이는 변수이다  
+    - 다른 함수들 간에서도 그 값을 유지한다.  
+    - static 변수는 컴파일러에 의해 첫번째로 컴파일 되어야 한다.  
+    - 어디에서 어떻게 선언되었느냐에 따라 전역, 지역 변수가 될 수 있다.  
+2. **auto**변수  
+    - storage class가 디폴트값으로 지정된다.  
+    - 지정이 안되면 디폴트로 'garbage'값을 output으로 지정한다.  
+    - 선언된 곳에서는 가시적이다.  
+    - 값이 유지된다.  
+    - 스태틱 변수 다음으로 컴파일 된다.  
+    - auto 변수는 **항상 지역변수**이다.  
 
