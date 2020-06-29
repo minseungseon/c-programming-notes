@@ -361,13 +361,13 @@ main()
      `&x`       : array 이름을 포인트 할 수 없다.  
      `&(x+y)`: expression을 포인트 할 수 없다.  
      
-- **pointer에서의 바이트는 다르다!**  
+- **pointer에서의 바이트는 다르다!**
     - 원래는 integer(4byte), float(4byte), character(1byte) 이다!  
     - `sizeof(int*)` = 8byte  
     - `sizeof(float*)` = 8byte  
     - `sizeof(char*)` = 8byte    
     
-- pointer에 쓰이는 **asterisk**의 용도  
+- pointer에 쓰이는 **asterisk**의 용도
     1. 포인터를 선언할 때  
     2. 해당 주소에 값이 접근하는 용도    
     
